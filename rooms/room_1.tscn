@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://qhx7mngavidm"]
+
+[ext_resource type="PackedScene" uid="uid://bcalalifl1lmm" path="res://character/character.tscn" id="1_tpjr0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1q5gr"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wm40i"]
+size = Vector2(658, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwofk"]
+size = Vector2(658, 22)
+
+[node name="Room1" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_1q5gr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+position = Vector2(320, 402)
+texture = SubResource("PlaceholderTexture2D_wm40i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(320, 402)
+shape = SubResource("RectangleShape2D_gwofk")
+
+[node name="Player" parent="." instance=ExtResource("1_tpjr0")]
+position = Vector2(321, 356)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(321, 356)
+zoom = Vector2(2, 2)
+process_callback = 0
