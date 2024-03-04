@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://bcalalifl1lmm"]
+[gd_scene load_steps=67 format=3 uid="uid://bcalalifl1lmm"]
 
 [ext_resource type="Script" path="res://character/character.gd" id="1_as82v"]
 [ext_resource type="Texture2D" uid="uid://lduxdp5mvby6" path="res://character/textures/character-back.png" id="2_0kbn1"]
@@ -8,10 +8,6 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_be8uq"]
 atlas = ExtResource("2_n1kna")
 region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5k0mf"]
-atlas = ExtResource("2_n1kna")
-region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iilnn"]
 atlas = ExtResource("2_n1kna")
@@ -260,18 +256,6 @@ animations = [{
 "speed": 0.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_be8uq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_be8uq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5k0mf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_be8uq")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_be8uq")
 }, {

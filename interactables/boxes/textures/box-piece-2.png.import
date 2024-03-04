@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqh5qpvugh6wt"
-path="res://.godot/imported/Idle.png-f641ec3dbed20cb3f0e793a58f941796.ctex"
+uid="uid://dxuxub5p0i1y5"
+path="res://.godot/imported/box-piece-2.png-b796c6e1791c6d518bdca02e3763c608.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interactables/boxes/textures/Idle.png"
-dest_files=["res://.godot/imported/Idle.png-f641ec3dbed20cb3f0e793a58f941796.ctex"]
+source_file="res://interactables/boxes/textures/box-piece-2.png"
+dest_files=["res://.godot/imported/box-piece-2.png-b796c6e1791c6d518bdca02e3763c608.ctex"]
 
 [params]
 

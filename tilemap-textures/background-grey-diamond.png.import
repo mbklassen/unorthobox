@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jhudpncgrujg"
-path="res://.godot/imported/terrain.png-eae91631a4682c8229da346b3d9048af.ctex"
+uid="uid://bpiismcr1j67b"
+path="res://.godot/imported/background-grey-diamond.png-0c79997d0a53e2823409207ee799cbfd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemap-textures/terrain.png"
-dest_files=["res://.godot/imported/terrain.png-eae91631a4682c8229da346b3d9048af.ctex"]
+source_file="res://tilemap-textures/background-grey-diamond.png"
+dest_files=["res://.godot/imported/background-grey-diamond.png-0c79997d0a53e2823409207ee799cbfd.ctex"]
 
 [params]
 

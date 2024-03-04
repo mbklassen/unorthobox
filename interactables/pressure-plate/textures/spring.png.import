@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jhudpncgrujg"
-path="res://.godot/imported/terrain.png-eae91631a4682c8229da346b3d9048af.ctex"
+uid="uid://dbbstsrwhh8go"
+path="res://.godot/imported/spring.png-e034a73dadce9e179caaf26b6b8974e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemap-textures/terrain.png"
-dest_files=["res://.godot/imported/terrain.png-eae91631a4682c8229da346b3d9048af.ctex"]
+source_file="res://interactables/pressure-plate/textures/spring.png"
+dest_files=["res://.godot/imported/spring.png-e034a73dadce9e179caaf26b6b8974e3.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jhudpncgrujg"
-path="res://.godot/imported/terrain.png-eae91631a4682c8229da346b3d9048af.ctex"
+uid="uid://br53d6hkp6gs4"
+path="res://.godot/imported/box-piece-3.png-3009cb3ec695297b42dcacacfb0dbf2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemap-textures/terrain.png"
-dest_files=["res://.godot/imported/terrain.png-eae91631a4682c8229da346b3d9048af.ctex"]
+source_file="res://interactables/boxes/textures/box-piece-3.png"
+dest_files=["res://.godot/imported/box-piece-3.png-3009cb3ec695297b42dcacacfb0dbf2d.ctex"]
 
 [params]
 

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbymv6yne8ftc"]
+
+[ext_resource type="Texture2D" uid="uid://24a88m7ynp2f" path="res://interactables/boxes/textures/box-piece-4.png" id="1_n56u8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8dw6i"]
+bounce = 0.25
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r8bds"]
+radius = 4.0
+
+[node name="BoxPiece" type="RigidBody2D"]
+z_index = 1
+collision_layer = 4
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_8dw6i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n56u8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r8bds")
