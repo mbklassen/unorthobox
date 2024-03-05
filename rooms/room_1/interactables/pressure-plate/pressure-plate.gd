@@ -16,7 +16,6 @@ func _on_body_entered(body) -> void:
 			position.y += 3
 			gate_animated_sprite.play()
 			gate_collision_shape.set_deferred("disabled", false)
-			#gate_collision_shape.disabled = false
 		press_count += 1
 		
 func _on_body_exited(body) -> void:
@@ -25,7 +24,7 @@ func _on_body_exited(body) -> void:
 		if press_count == 0:
 			if PlayerManager.is_shocked:
 				print("we are shocked")
-				$Timer.start(0.8)
+				$Timer.start(1.4)
 			else:
 				print("changing position")
 				position.y -= 3

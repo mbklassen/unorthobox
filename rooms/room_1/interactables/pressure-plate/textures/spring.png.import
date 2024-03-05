@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://24a88m7ynp2f"
-path="res://.godot/imported/box-piece-4.png-f0c691f3ca555e87f6008309cca2e624.ctex"
+uid="uid://dbbstsrwhh8go"
+path="res://.godot/imported/spring.png-982b0b73e157df48f0d6660b1ec110d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interactables/boxes/textures/box-piece-4.png"
-dest_files=["res://.godot/imported/box-piece-4.png-f0c691f3ca555e87f6008309cca2e624.ctex"]
+source_file="res://rooms/room_1/interactables/pressure-plate/textures/spring.png"
+dest_files=["res://.godot/imported/spring.png-982b0b73e157df48f0d6660b1ec110d2.ctex"]
 
 [params]
 

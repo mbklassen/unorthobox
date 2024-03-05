@@ -1,11 +1,11 @@
 class_name Box
 extends RigidBody2D
 
-const BOX_PIECE : PackedScene = preload("res://interactables/boxes/box_piece.tscn")
-const BOX_PIECE_1_TEXTURE = preload("res://interactables/boxes/textures/box-piece-1.png")
-const BOX_PIECE_2_TEXTURE = preload("res://interactables/boxes/textures/box-piece-2.png")
-const BOX_PIECE_3_TEXTURE = preload("res://interactables/boxes/textures/box-piece-3.png")
-const BOX_PIECE_4_TEXTURE = preload("res://interactables/boxes/textures/box-piece-4.png")
+const BOX_PIECE : PackedScene = preload("res://rooms/room_1/interactables/box/box_piece.tscn")
+const BOX_PIECE_1_TEXTURE : Texture2D = preload("res://rooms/room_1/interactables/box/textures/box-piece-1.png")
+const BOX_PIECE_2_TEXTURE : Texture2D = preload("res://rooms/room_1/interactables/box/textures/box-piece-2.png")
+const BOX_PIECE_3_TEXTURE : Texture2D = preload("res://rooms/room_1/interactables/box/textures/box-piece-3.png")
+const BOX_PIECE_4_TEXTURE : Texture2D = preload("res://rooms/room_1/interactables/box/textures/box-piece-4.png")
 
 @onready var interactables = $".."
 

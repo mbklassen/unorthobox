@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br53d6hkp6gs4"
-path="res://.godot/imported/box-piece-3.png-3009cb3ec695297b42dcacacfb0dbf2d.ctex"
+uid="uid://cqh5qpvugh6wt"
+path="res://.godot/imported/box.png-fa59a788d7e553ee28bc14c9c2d0efa5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interactables/boxes/textures/box-piece-3.png"
-dest_files=["res://.godot/imported/box-piece-3.png-3009cb3ec695297b42dcacacfb0dbf2d.ctex"]
+source_file="res://rooms/room_1/interactables/box/textures/box.png"
+dest_files=["res://.godot/imported/box.png-fa59a788d7e553ee28bc14c9c2d0efa5.ctex"]
 
 [params]
 

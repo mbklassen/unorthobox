@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp77m22hwkik1"
-path="res://.godot/imported/pressure-plate.png-a2880da62938dc451a094743324ea004.ctex"
+uid="uid://5ra6glnor082"
+path="res://.godot/imported/gate-backdrop.png-04b1392c1b1712a6f354709e538bcc76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interactables/pressure-plate/textures/pressure-plate.png"
-dest_files=["res://.godot/imported/pressure-plate.png-a2880da62938dc451a094743324ea004.ctex"]
+source_file="res://rooms/room_1/interactables/gate/textures/gate-backdrop.png"
+dest_files=["res://.godot/imported/gate-backdrop.png-04b1392c1b1712a6f354709e538bcc76.ctex"]
 
 [params]
 

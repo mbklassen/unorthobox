@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://davk6xsp2c15n"
-path="res://.godot/imported/character-back.png-d95c6a183a70ca264a1925fb54b2c936.ctex"
+uid="uid://cp77m22hwkik1"
+path="res://.godot/imported/pressure-plate.png-fb82445914d4f567734478744b05f81c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://character/textures/character-back.png"
-dest_files=["res://.godot/imported/character-back.png-d95c6a183a70ca264a1925fb54b2c936.ctex"]
+source_file="res://rooms/room_1/interactables/pressure-plate/textures/pressure-plate.png"
+dest_files=["res://.godot/imported/pressure-plate.png-fb82445914d4f567734478744b05f81c.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 extends Area2D
 
-const SPRING_POWER : int = 800
+const SPRING_POWER : int = 600
 
 var spring_has_sprung : bool = false
 
