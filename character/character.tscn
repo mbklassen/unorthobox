@@ -496,7 +496,6 @@ position = Vector2(0, 6.87746e-06)
 scale = Vector2(7.69231, 7.69231)
 sprite_frames = SubResource("SpriteFrames_yyrgr")
 animation = &"front"
-autoplay = "side"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_d5ths")

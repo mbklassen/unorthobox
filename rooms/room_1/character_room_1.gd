@@ -13,22 +13,31 @@ var shift_sprite_set : bool = false
 
 @onready var gate = $"../Interactables/Gate"
 @onready var animated_sprite = $BackBufferCopy/AnimatedSprite2D
-@onready var terrain_tile_map_floor = $"../TerrainTileMap/InvisibleFloor"
-	
+@onready var terrain_invisible_colliders = $"../TerrainTileMap/InvisibleCollidere"
+@onready var input_sprite_space = $"../InputSprites/Space"
+@onready var jump_prompt_trigger = $"../InputSprites/JumpPromptTrigger"
+
+func _ready():
+	animated_sprite.animation = "front"
+
 func _physics_process(delta) -> void:
 	if not is_on_floor() and not is_entering_gate and not PlayerManager.is_shocked:
 		velocity.y += gravity * delta
 
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not is_entering_gate and not PlayerManager.is_shocked:
 		velocity.y = JUMP_VELOCITY
+		if input_sprite_space.visible == true:
+			input_sprite_space.visible = false
 	
 	var direction : float
 	if not is_entering_gate and not PlayerManager.is_shocked:
 		direction = Input.get_axis("move_left", "move_right")
 		if direction:
-			if direction < 0 and not PlayerManager.is_behind_wall:
+			if not animated_sprite.animation == "side":
+				animated_sprite.animation = "side"
+			if direction < 0:
 				animated_sprite.flip_h = true
-			elif direction > 0 and not PlayerManager.is_behind_wall:
+			elif direction > 0:
 				animated_sprite.flip_h = false
 		velocity.x = direction * SPEED
 		
@@ -43,7 +52,8 @@ func _physics_process(delta) -> void:
 			motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 			position.y = move_toward(position.y, gate.position.y + 14, (SPEED/6) * delta)
 			if position.y == gate.position.y + 14 and not timer_started:
-				terrain_tile_map_floor.get_node("CollisionShapeInvisibleFloor").disabled = false
+				terrain_invisible_colliders.get_node("CollisionShapeInvisibleFloor").disabled = false
+				terrain_invisible_colliders.get_node("CollisionShapeInvisibleWall").disabled = false
 				PlayerManager.is_shocked = true
 				z_index = -1
 				animated_sprite.animation = "front"
@@ -64,14 +74,6 @@ func _input(event) -> void:
 		can_enter_gate = false
 		is_entering_gate = true
 
-func _on_gate_body_entered(body) -> void:
-	if body.is_in_group("character"):
-		can_enter_gate = true
-			
-func _on_gate_body_exited(body) -> void:
-	if body.is_in_group("character"):
-		can_enter_gate = false
-			
 func _on_timer_timeout() -> void:
 	PlayerManager.is_behind_wall = true
 	PlayerManager.is_shocked = false
@@ -80,3 +82,20 @@ func _on_timer_timeout() -> void:
 	#Turn off collisions with items
 	set_collision_mask_value(3, false)
 	motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
+
+func _on_gate_body_entered(body) -> void:
+	if body.is_in_group("character"):
+		can_enter_gate = true
+			
+func _on_gate_body_exited(body) -> void:
+	if body.is_in_group("character"):
+		can_enter_gate = false
+
+func _on_jump_prompt_trigger_body_entered(body):
+	if body.is_in_group("character"):
+		input_sprite_space.visible = true
+		jump_prompt_trigger.set_deferred("monitoring", false)
+
+func _on_dungeon_entrance_body_entered(body):
+	if body.is_in_group("character"):
+		z_index = 2

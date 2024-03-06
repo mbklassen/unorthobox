@@ -23,10 +23,8 @@ func _on_body_exited(body) -> void:
 		press_count -= 1
 		if press_count == 0:
 			if PlayerManager.is_shocked:
-				print("we are shocked")
 				$Timer.start(1.4)
 			else:
-				print("changing position")
 				position.y -= 3
 				gate_animated_sprite.play_backwards()
 				gate_collision_shape.set_deferred("disabled", true)
