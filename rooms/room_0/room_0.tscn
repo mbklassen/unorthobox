@@ -661,11 +661,12 @@ script = ExtResource("11_nqckq")
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Character"]
 remote_path = NodePath("../../Camera2D")
 
-[node name="Timer" type="Timer" parent="Character"]
+[node name="RoomChangeTimer" type="Timer" parent="Character"]
 process_callback = 0
 one_shot = true
 
 [node name="InputSprites" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.858824)
 
 [node name="Movement" type="Node2D" parent="InputSprites"]
 
@@ -724,4 +725,4 @@ anim_player = NodePath("../AnimationPlayer")
 [connection signal="body_exited" from="Interactables/Gate" to="Character" method="_on_gate_body_exited"]
 [connection signal="body_entered" from="Interactables/PressurePlate" to="Interactables/PressurePlate" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactables/PressurePlate" to="Interactables/PressurePlate" method="_on_body_exited"]
-[connection signal="timeout" from="Character/Timer" to="Character" method="_on_timer_timeout"]
+[connection signal="timeout" from="Character/RoomChangeTimer" to="Character" method="_on_room_change_timer_timeout"]

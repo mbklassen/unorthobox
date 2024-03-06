@@ -19,4 +19,6 @@ func _process(_delta):
 				old_room.queue_free()
 				remove_child(old_room)
 				add_child(room)
+			2: 
+				print("room changed")
 		RoomManager.room_changed = false

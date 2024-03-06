@@ -17,7 +17,6 @@ func spring(power : float, direction : float) -> void:
 
 func _on_box_body_entered(body):
 	if body.is_in_group("terrain"):
-		print("box hit terrain")
 		var box_piece_1 : RigidBody2D = BOX_PIECE.instantiate()
 		var box_piece_2 : RigidBody2D = BOX_PIECE.instantiate()
 		var box_piece_3 : RigidBody2D = BOX_PIECE.instantiate()

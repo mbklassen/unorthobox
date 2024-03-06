@@ -22,7 +22,7 @@ func _on_body_exited(body) -> void:
 	if (body.is_in_group("character") or body.is_in_group("boxes")) and press_count > 0:
 		press_count -= 1
 		if press_count == 0:
-			if PlayerManager.is_shocked:
+			if PlayerManager.is_frozen:
 				$Timer.start(1.4)
 			else:
 				position.y -= 3

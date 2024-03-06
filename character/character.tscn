@@ -1,9 +1,13 @@
-[gd_scene load_steps=68 format=3 uid="uid://bcalalifl1lmm"]
+[gd_scene load_steps=72 format=3 uid="uid://bcalalifl1lmm"]
 
 [ext_resource type="Texture2D" uid="uid://davk6xsp2c15n" path="res://character/textures/character-back.png" id="2_0kbn1"]
 [ext_resource type="Texture2D" uid="uid://gu2nfaojidhj" path="res://character/textures/character-front.png" id="2_n1kna"]
 [ext_resource type="Texture2D" uid="uid://0itqbutnb5mv" path="res://character/textures/character-side.png" id="2_prrqh"]
 [ext_resource type="Texture2D" uid="uid://c23rvd1g8c538" path="res://character/textures/character-shadow.png" id="4_j1dna"]
+[ext_resource type="Texture2D" uid="uid://bo55qmigqrqxw" path="res://character/emotes/textures/exclamation.png" id="5_wnted"]
+[ext_resource type="Script" path="res://character/emotes/exclamation_emote.gd" id="6_ecyop"]
+[ext_resource type="Texture2D" uid="uid://xv4cqr5552bd" path="res://character/emotes/textures/question.png" id="7_1mvt6"]
+[ext_resource type="Script" path="res://character/emotes/confused_emote.gd" id="8_n84bp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_18jqb"]
 atlas = ExtResource("2_n1kna")
@@ -482,7 +486,7 @@ size = Vector2(24, 24)
 
 [node name="Character" type="CharacterBody2D" groups=["character"]]
 collision_layer = 2
-collision_mask = 15
+collision_mask = 31
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("4_j1dna")
@@ -499,3 +503,21 @@ animation = &"front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_d5ths")
+
+[node name="Emotes" type="Node2D" parent="."]
+
+[node name="Surprised" type="Sprite2D" parent="Emotes"]
+visible = false
+position = Vector2(0, -21)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_wnted")
+script = ExtResource("6_ecyop")
+
+[node name="Confused" type="Sprite2D" parent="Emotes"]
+visible = false
+position = Vector2(0, -21)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_1mvt6")
+script = ExtResource("8_n84bp")
+
+[connection signal="animation_finished" from="BackBufferCopy/AnimatedSprite2D" to="Emotes/Surprised" method="_on_animated_sprite_2d_animation_finished"]

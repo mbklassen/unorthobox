@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://csf3n3j53n3ko"]
+
+[ext_resource type="Texture2D" uid="uid://bo55qmigqrqxw" path="res://character/emotes/textures/exclamation.png" id="1_rnpuf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyk7h"]
+size = Vector2(2, 8)
+
+[node name="ExclamationObject" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_rnpuf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gyk7h")

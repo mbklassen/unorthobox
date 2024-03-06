@@ -47,7 +47,7 @@ func _physics_process(delta) -> void:
 			motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 			position.y = move_toward(position.y, gate.position.y + 14, (SPEED/6) * delta)
 			if position.y == gate.position.y + 14 and not timer_started:
-				$Timer.start(1)
+				$RoomChangeTimer.start(1)
 				timer_started = true
 		
 	move_and_slide()
@@ -66,7 +66,7 @@ func _on_gate_body_exited(body) -> void:
 	if body.is_in_group("character"):
 		can_enter_gate = false
 		input_sprite_w.visible = false
-		
-func _on_timer_timeout():
-	RoomManager.room_changed = true
+
+func _on_room_change_timer_timeout():
 	RoomManager.current_room = 1
+	RoomManager.room_changed = true
