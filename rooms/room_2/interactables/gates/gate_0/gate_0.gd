@@ -4,7 +4,7 @@ extends Area2D
 
 func _ready():
 	animated_sprite.frame = 6
-	$Timer.start(1.2)
+	$Timer.start(0.6)
 
 func _on_timer_timeout():
 	animated_sprite.play_backwards()

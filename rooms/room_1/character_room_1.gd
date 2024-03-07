@@ -21,8 +21,10 @@ var confused_emote_played : bool = false
 @onready var input_sprite_space = $"../InputSprites/Space"
 @onready var jump_prompt_trigger = $"../InputSprites/JumpPromptTrigger"
 @onready var gate_2 = $"../Interactables/Gate2"
+@onready var circle_transition = $"../CanvasLayer/CircleTransition"
 
 func _ready():
+	circle_transition.call_deferred("set_next_animation", false)
 	animated_sprite.animation = "front"
 
 func _physics_process(delta) -> void:
@@ -47,40 +49,25 @@ func _physics_process(delta) -> void:
 		velocity.x = direction * SPEED
 		
 	if is_entering_gate:
-		position.x = move_toward(position.x, gate.position.x, (SPEED/6) * delta)
-		if position.x < gate.position.x:
-			animated_sprite.flip_h = false
-		else:
-			animated_sprite.flip_h = true
-		if position.x == gate.position.x:
-			animated_sprite.animation = "back"
-			motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
-			position.y = move_toward(position.y, gate.position.y + 14, (SPEED/6) * delta)
-			if position.y == gate.position.y + 14 and not wall_phase_timer_started:
-				terrain_invisible_colliders.get_node("CollisionShapeInvisibleFloor").disabled = false
-				terrain_invisible_colliders.get_node("CollisionShapeInvisibleWall").disabled = false
-				PlayerManager.is_frozen = true
-				z_index = -1
-				animated_sprite.animation = "front"
-				animated_sprite.play()
-				PlayerManager.is_surprised = true
-				is_entering_gate = false
-				$WallPhaseTimer.start(3.2)
-				wall_phase_timer_started = true
+		enter_gate(gate, delta)
+		if position.y == gate.position.y + 14 and not wall_phase_timer_started:
+			terrain_invisible_colliders.get_node("CollisionShapeInvisibleFloor").disabled = false
+			terrain_invisible_colliders.get_node("CollisionShapeInvisibleWall").disabled = false
+			PlayerManager.is_frozen = true
+			z_index = -1
+			animated_sprite.animation = "front"
+			animated_sprite.play()
+			PlayerManager.is_surprised = true
+			is_entering_gate = false
+			$WallPhaseTimer.start(3.2)
+			wall_phase_timer_started = true
 	
 	if is_entering_gate_2:
-		position.x = move_toward(position.x, gate_2.position.x, (SPEED/6) * delta)
-		if position.x < gate_2.position.x:
-			animated_sprite.flip_h = false
-		else:
-			animated_sprite.flip_h = true
-		if position.x == gate_2.position.x:
-			animated_sprite.animation = "back"
-			motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
-			position.y = move_toward(position.y, gate_2.position.y + 14, (SPEED/6) * delta)
-			if position.y == gate_2.position.y + 14 and not room_change_timer_started:
-				$RoomChangeTimer.start(1)
-				room_change_timer_started = true
+		enter_gate(gate_2, delta)
+		if position.y == gate_2.position.y + 14 and not room_change_timer_started:
+			circle_transition.set_next_animation(true)
+			$RoomChangeTimer.start(1.7)
+			room_change_timer_started = true
 	
 	move_and_slide()
 	
@@ -88,6 +75,17 @@ func _physics_process(delta) -> void:
 		var collision : KinematicCollision2D = get_slide_collision(i)
 		if collision.get_collider().is_in_group("boxes"):
 			collision.get_collider().apply_central_impulse(-collision.get_normal() * PUSH_FORCE * delta)
+
+func enter_gate(gate_i, delta) -> void:
+	position.x = move_toward(position.x, gate_i.position.x, (SPEED/6) * delta)
+	if position.x < gate_i.position.x:
+		animated_sprite.flip_h = false
+	else:
+		animated_sprite.flip_h = true
+	if position.x == gate_i.position.x:
+		animated_sprite.animation = "back"
+		motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+		position.y = move_toward(position.y, gate_i.position.y + 14, (SPEED/6) * delta)
 
 func _input(event) -> void:
 	if event.is_action_released("enter_gate"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ba43ooau8ijfk"]
+[gd_scene load_steps=35 format=3 uid="uid://ba43ooau8ijfk"]
 
 [ext_resource type="Texture2D" uid="uid://bpiismcr1j67b" path="res://tilemap-textures/background-grey-diamond.png" id="1_eh80b"]
 [ext_resource type="Texture2D" uid="uid://5ra6glnor082" path="res://rooms/room_1/interactables/gate/textures/gate-backdrop.png" id="2_edju0"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cqah3i3osv71m" path="res://input-textures/keyboard_d_outline.svg" id="11_x34co"]
 [ext_resource type="Texture2D" uid="uid://brts8cbx6qgu0" path="res://input-textures/keyboard_w_outline.svg" id="12_cde3e"]
 [ext_resource type="Texture2D" uid="uid://cvajigjh4qayk" path="res://input-textures/keyboard_arrow_right_outline.png" id="13_lle2g"]
+[ext_resource type="PackedScene" uid="uid://bvxcyyjup53hk" path="res://ui/transitions/circle_transition.tscn" id="14_ypgy2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d0gyn"]
 texture = ExtResource("1_eh80b")
@@ -720,6 +721,11 @@ libraries = {
 }
 tree_root = SubResource("AnimationRootNode_00576")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CircleTransition" parent="CanvasLayer" instance=ExtResource("14_ypgy2")]
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="Interactables/Gate" to="Character" method="_on_gate_body_entered"]
 [connection signal="body_exited" from="Interactables/Gate" to="Character" method="_on_gate_body_exited"]

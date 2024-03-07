@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_q20gi"]
 [ext_resource type="Script" path="res://room_spawner.gd" id="1_uawcq"]
-[ext_resource type="Texture2D" uid="uid://28mq2g7v3o1l" path="res://ui/hud/flair_arrow_3.svg" id="2_75y6l"]
+[ext_resource type="Texture2D" uid="uid://28mq2g7v3o1l" path="res://ui/hud/textures/restart-arrow.svg" id="2_75y6l"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_q20gi")

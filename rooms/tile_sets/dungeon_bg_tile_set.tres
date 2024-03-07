@@ -1,0 +1,22 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bwsiqhetk20hd"]
+
+[ext_resource type="Texture2D" uid="uid://dha2wvs2qn05e" path="res://tilemap-textures/background-dungeon.png" id="1_p2vib"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_drkc4"]
+texture = ExtResource("1_p2vib")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_drkc4")

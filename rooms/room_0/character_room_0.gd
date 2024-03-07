@@ -13,6 +13,7 @@ var timer_started : bool = false
 @onready var gate = $"../Interactables/Gate"
 @onready var animated_sprite = $BackBufferCopy/AnimatedSprite2D
 @onready var input_sprite_w = $"../InputSprites/Actions/W"
+@onready var circle_transition = $"../CanvasLayer/CircleTransition"
 
 func _ready():
 	animated_sprite.animation = "front"
@@ -37,20 +38,24 @@ func _physics_process(delta) -> void:
 		velocity.x = direction * SPEED
 		
 	if is_entering_gate:
-		position.x = move_toward(position.x, gate.position.x, (SPEED/6) * delta)
-		if position.x < gate.position.x:
-			animated_sprite.flip_h = false
-		else:
-			animated_sprite.flip_h = true
-		if position.x == gate.position.x:
-			animated_sprite.animation = "back"
-			motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
-			position.y = move_toward(position.y, gate.position.y + 14, (SPEED/6) * delta)
-			if position.y == gate.position.y + 14 and not timer_started:
-				$RoomChangeTimer.start(1)
-				timer_started = true
+		enter_gate(gate,delta)
+		if position.y == gate.position.y + 14 and not timer_started:
+			circle_transition.set_next_animation(true)
+			$RoomChangeTimer.start(1.7)
+			timer_started = true
 		
 	move_and_slide()
+
+func enter_gate(gate_i, delta) -> void:
+	position.x = move_toward(position.x, gate_i.position.x, (SPEED/6) * delta)
+	if position.x < gate_i.position.x:
+		animated_sprite.flip_h = false
+	else:
+		animated_sprite.flip_h = true
+	if position.x == gate_i.position.x:
+		animated_sprite.animation = "back"
+		motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+		position.y = move_toward(position.y, gate_i.position.y + 14, (SPEED/6) * delta)
 
 func _input(event) -> void:
 	if event.is_action_released("enter_gate") and can_enter_gate:

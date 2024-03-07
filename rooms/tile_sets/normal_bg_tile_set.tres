@@ -1,0 +1,12 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://23fh70gmd0lj"]
+
+[ext_resource type="Texture2D" uid="uid://bpiismcr1j67b" path="res://tilemap-textures/background-grey-diamond.png" id="1_iiy5l"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ybjb2"]
+texture = ExtResource("1_iiy5l")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(64, 64)
+sources/2 = SubResource("TileSetAtlasSource_ybjb2")
