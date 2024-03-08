@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PlayerManager="*res://singletons/player_manager.gd"
 RoomManager="*res://singletons/room_manager.gd"
+BackgroundMusic="*res://sound/music/background_music.tscn"
 
 [display]
 

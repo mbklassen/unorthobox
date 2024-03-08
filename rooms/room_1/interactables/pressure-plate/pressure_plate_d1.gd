@@ -6,12 +6,16 @@ var pressure_plate_d2_pressed : bool = false
 @onready var gate2_collision_shape : CollisionShape2D = $"../Gate2/CollisionShape2D"
 @onready var gate2_animated_sprite : AnimatedSprite2D = $"../Gate2/AnimatedSprite2D"
 @onready var collision_shape = $CollisionShape2D
+@onready var click_down_sound = $ClickDownSound
+@onready var gate2_opening_sound = $"../Gate2/GateOpeningSound"
 
 func _on_body_entered(body) -> void:
 	if body.is_in_group("character"):
 		position.y += 2
+		click_down_sound.play()
 		collision_shape.set_deferred("disabled", true)
 		if pressure_plate_d2_pressed:
+			gate2_opening_sound.play()
 			gate2_animated_sprite.play()
 			gate2_collision_shape.set_deferred("disabled", false)
 

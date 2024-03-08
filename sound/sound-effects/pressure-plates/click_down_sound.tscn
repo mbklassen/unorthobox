@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bswx7qjmhgmsq"]
+
+[ext_resource type="AudioStream" uid="uid://6x7x177o2ogm" path="res://sound/sound-effects/pressure-plates/click-down.ogg" id="1_c6wf1"]
+
+[node name="ClickDownSound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_c6wf1")
+volume_db = 15.0

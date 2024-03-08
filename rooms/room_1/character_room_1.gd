@@ -11,7 +11,7 @@ var can_enter_gate_2 : bool = false
 var is_entering_gate : bool = false
 var is_entering_gate_2 : bool = false
 var wall_phase_timer_started : bool = false
-var room_change_timer_started : bool = false
+var wait_timer_started : bool = false
 var shift_sprite_set : bool = false
 var confused_emote_played : bool = false
 
@@ -21,10 +21,8 @@ var confused_emote_played : bool = false
 @onready var input_sprite_space = $"../InputSprites/Space"
 @onready var jump_prompt_trigger = $"../InputSprites/JumpPromptTrigger"
 @onready var gate_2 = $"../Interactables/Gate2"
-@onready var circle_transition = $"../CanvasLayer/CircleTransition"
 
 func _ready():
-	circle_transition.call_deferred("set_next_animation", false)
 	animated_sprite.animation = "front"
 
 func _physics_process(delta) -> void:
@@ -64,10 +62,9 @@ func _physics_process(delta) -> void:
 	
 	if is_entering_gate_2:
 		enter_gate(gate_2, delta)
-		if position.y == gate_2.position.y + 14 and not room_change_timer_started:
-			circle_transition.set_next_animation(true)
-			$RoomChangeTimer.start(1.7)
-			room_change_timer_started = true
+		if position.y == gate_2.position.y + 14 and not wait_timer_started:
+			$WaitTimer.start(0.5)
+			wait_timer_started = true
 	
 	move_and_slide()
 	
@@ -148,6 +145,12 @@ func _on_gate_2_body_exited(body):
 	if body.is_in_group("character"):
 		can_enter_gate_2 = false
 
+func _on_wait_timer_timeout():
+	RoomManager.room_about_to_change = true
+	$RoomChangeTimer.start(0.9)
+
 func _on_room_change_timer_timeout():
+	RoomManager.room_about_to_change = false
 	RoomManager.current_room = 2
 	RoomManager.room_changed = true
+

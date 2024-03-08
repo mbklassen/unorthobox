@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://qhx7mngavidm"]
+[gd_scene load_steps=58 format=3 uid="uid://qhx7mngavidm"]
 
 [ext_resource type="TileSet" uid="uid://23fh70gmd0lj" path="res://rooms/tile_sets/normal_bg_tile_set.tres" id="1_l2wwc"]
 [ext_resource type="Script" path="res://rooms/room_1/interactables/gate/gate_0.gd" id="2_2lypd"]
@@ -7,24 +7,26 @@
 [ext_resource type="Texture2D" uid="uid://5ra6glnor082" path="res://rooms/room_1/interactables/gate/textures/gate-backdrop.png" id="3_32gn2"]
 [ext_resource type="Shader" path="res://rooms/room_1/interactables/gate/gate_shader.gdshader" id="4_4pawk"]
 [ext_resource type="Texture2D" uid="uid://cxgppro3rxdho" path="res://rooms/room_1/interactables/gate/textures/gate.png" id="5_wf6i8"]
+[ext_resource type="PackedScene" uid="uid://c0o0eyrf67fi" path="res://sound/sound-effects/gates/gate_closing_sound.tscn" id="6_s4ta4"]
 [ext_resource type="Script" path="res://rooms/room_1/interactables/pressure-plate/spring.gd" id="6_wab8u"]
 [ext_resource type="Texture2D" uid="uid://dbbstsrwhh8go" path="res://rooms/room_1/interactables/pressure-plate/textures/spring.png" id="7_x8cgi"]
 [ext_resource type="Script" path="res://rooms/room_1/interactables/pressure-plate/pressure-plate.gd" id="8_c3ih2"]
+[ext_resource type="PackedScene" uid="uid://bcdqb81oco5v4" path="res://sound/sound-effects/gates/gate_opening_sound.tscn" id="9_m78fa"]
 [ext_resource type="Texture2D" uid="uid://cp77m22hwkik1" path="res://rooms/room_1/interactables/pressure-plate/textures/pressure-plate.png" id="9_n5tb7"]
 [ext_resource type="Script" path="res://rooms/room_1/interactables/box/box.gd" id="10_fslgy"]
 [ext_resource type="Texture2D" uid="uid://cqh5qpvugh6wt" path="res://rooms/room_1/interactables/box/textures/box.png" id="11_etwt6"]
+[ext_resource type="PackedScene" uid="uid://bswx7qjmhgmsq" path="res://sound/sound-effects/pressure-plates/click_down_sound.tscn" id="13_a45lg"]
+[ext_resource type="PackedScene" uid="uid://bt0o573hjphq2" path="res://sound/sound-effects/pressure-plates/click_up_sound.tscn" id="13_kn8iw"]
 [ext_resource type="PackedScene" uid="uid://bcalalifl1lmm" path="res://character/character.tscn" id="14_3i3kf"]
 [ext_resource type="Script" path="res://rooms/room_1/terrain_tile_map.gd" id="14_kry4n"]
 [ext_resource type="Script" path="res://rooms/room_1/interactables/pressure-plate/pressure_plate_d1.gd" id="14_uv2ei"]
 [ext_resource type="Script" path="res://rooms/room_1/interactables/pressure-plate/pressure_plate_d2.gd" id="15_h1npt"]
 [ext_resource type="Script" path="res://rooms/room_1/character_room_1.gd" id="15_ri2d1"]
-[ext_resource type="Texture2D" uid="uid://jhudpncgrujg" path="res://tilemap-textures/terrain.png" id="16_4au0l"]
 [ext_resource type="TileSet" uid="uid://dwqxio5vypmyv" path="res://rooms/tile_sets/terrain_tile_set.tres" id="16_7mb85"]
 [ext_resource type="Texture2D" uid="uid://brtggpe62pmk8" path="res://input-textures/keyboard_space_outline.svg" id="16_62ve4"]
 [ext_resource type="Script" path="res://rooms/room_1/terrain_overlay_tile_map.gd" id="16_wgu2y"]
-[ext_resource type="Texture2D" uid="uid://d0hr6fs5h4v3g" path="res://tilemap-textures/terrain-edited.png" id="17_7e5bj"]
 [ext_resource type="Script" path="res://rooms/room_1/input_sprite_space.gd" id="21_al75m"]
-[ext_resource type="PackedScene" uid="uid://bvxcyyjup53hk" path="res://ui/transitions/circle_transition.tscn" id="25_sxutd"]
+[ext_resource type="TileSet" uid="uid://ry2a2o7m0csv" path="res://rooms/tile_sets/terrain_overlay_tile_set.tres" id="24_qjjx5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1v0wm"]
 atlas = ExtResource("5_wf6i8")
@@ -133,173 +135,6 @@ size = Vector2(112, 17.5898)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jo5ln"]
 size = Vector2(4, 106)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_csw1g"]
-texture = ExtResource("16_4au0l")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-10:0/0 = 0
-12:0/0 = 0
-13:0/0 = 0
-14:0/0 = 0
-15:0/0 = 0
-17:0/0 = 0
-18:0/0 = 0
-19:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-10:1/0 = 0
-12:1/0 = 0
-13:1/0 = 0
-14:1/0 = 0
-15:1/0 = 0
-17:1/0 = 0
-18:1/0 = 0
-19:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-8:2/0 = 0
-13:2/0 = 0
-14:2/0 = 0
-15:2/0 = 0
-17:2/0 = 0
-18:2/0 = 0
-19:2/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-6:4/0 = 0
-7:4/0 = 0
-8:4/0 = 0
-9:4/0 = 0
-10:4/0 = 0
-12:4/0 = 0
-13:4/0 = 0
-14:4/0 = 0
-15:4/0 = 0
-17:4/0 = 0
-18:4/0 = 0
-19:4/0 = 0
-20:4/0 = 0
-21:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-6:5/0 = 0
-7:5/0 = 0
-8:5/0 = 0
-9:5/0 = 0
-10:5/0 = 0
-12:5/0 = 0
-13:5/0 = 0
-14:5/0 = 0
-15:5/0 = 0
-17:5/0 = 0
-18:5/0 = 0
-19:5/0 = 0
-20:5/0 = 0
-21:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-6:6/0 = 0
-7:6/0 = 0
-8:6/0 = 0
-13:6/0 = 0
-14:6/0 = 0
-15:6/0 = 0
-17:6/0 = 0
-18:6/0 = 0
-19:6/0 = 0
-0:8/0 = 0
-1:8/0 = 0
-2:8/0 = 0
-3:8/0 = 0
-4:8/0 = 0
-6:8/0 = 0
-7:8/0 = 0
-8:8/0 = 0
-9:8/0 = 0
-10:8/0 = 0
-12:8/0 = 0
-13:8/0 = 0
-14:8/0 = 0
-15:8/0 = 0
-17:8/0 = 0
-18:8/0 = 0
-19:8/0 = 0
-20:8/0 = 0
-0:9/0 = 0
-1:9/0 = 0
-2:9/0 = 0
-3:9/0 = 0
-4:9/0 = 0
-6:9/0 = 0
-7:9/0 = 0
-8:9/0 = 0
-9:9/0 = 0
-10:9/0 = 0
-12:9/0 = 0
-13:9/0 = 0
-14:9/0 = 0
-15:9/0 = 0
-17:9/0 = 0
-18:9/0 = 0
-19:9/0 = 0
-20:9/0 = 0
-0:10/0 = 0
-1:10/0 = 0
-2:10/0 = 0
-6:10/0 = 0
-7:10/0 = 0
-8:10/0 = 0
-13:10/0 = 0
-14:10/0 = 0
-15:10/0 = 0
-18:10/0 = 0
-19:10/0 = 0
-20:10/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t8jba"]
-texture = ExtResource("17_7e5bj")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_ataub"]
-sources/2 = SubResource("TileSetAtlasSource_csw1g")
-sources/3 = SubResource("TileSetAtlasSource_t8jba")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43jym"]
 size = Vector2(4, 91)
 
@@ -367,8 +202,10 @@ shape = SubResource("RectangleShape2D_1mxen")
 disabled = true
 
 [node name="Timer" type="Timer" parent="Interactables/Gate0"]
-wait_time = 1.6
+wait_time = 1.2
 one_shot = true
+
+[node name="GateClosingSound" parent="Interactables/Gate0" instance=ExtResource("6_s4ta4")]
 
 [node name="Gate" type="Area2D" parent="Interactables"]
 position = Vector2(286, 352.5)
@@ -424,6 +261,10 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_1mxen")
 disabled = true
 
+[node name="GateOpeningSound" parent="Interactables/Gate" instance=ExtResource("9_m78fa")]
+
+[node name="GateClosingSound" parent="Interactables/Gate" instance=ExtResource("6_s4ta4")]
+
 [node name="Gate2" type="Area2D" parent="Interactables"]
 position = Vector2(1151, 1344.5)
 collision_layer = 4
@@ -443,6 +284,8 @@ animation = &"open"
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_1mxen")
 disabled = true
+
+[node name="GateOpeningSound" parent="Interactables/Gate2" instance=ExtResource("9_m78fa")]
 
 [node name="Spring" type="Area2D" parent="Interactables"]
 position = Vector2(431, 377)
@@ -476,6 +319,10 @@ process_callback = 0
 wait_time = 2.0
 one_shot = true
 
+[node name="ClickUpSound" parent="Interactables/PressurePlate" instance=ExtResource("13_kn8iw")]
+
+[node name="ClickDownSound" parent="Interactables/PressurePlate" instance=ExtResource("13_a45lg")]
+
 [node name="Box" type="RigidBody2D" parent="Interactables" groups=["boxes"]]
 z_index = 3
 position = Vector2(613, 374)
@@ -508,6 +355,8 @@ texture = ExtResource("9_n5tb7")
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_eipko")
 
+[node name="ClickDownSound" parent="Interactables/PressurePlateD1" instance=ExtResource("13_a45lg")]
+
 [node name="PressurePlateD2" type="Area2D" parent="Interactables"]
 position = Vector2(1298, 1374)
 collision_layer = 4
@@ -520,6 +369,8 @@ texture = ExtResource("9_n5tb7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/PressurePlateD2"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_eipko")
+
+[node name="ClickDownSound" parent="Interactables/PressurePlateD2" instance=ExtResource("13_a45lg")]
 
 [node name="TerrainTileMap" type="TileMap" parent="." groups=["terrain"]]
 tile_set = ExtResource("16_7mb85")
@@ -582,12 +433,14 @@ collision_mask = 2
 position = Vector2(952, 392)
 shape = SubResource("RectangleShape2D_gqd6t")
 
-[node name="EmoteTrigger" type="Area2D" parent="TerrainTileMap"]
+[node name="Triggers" type="Node2D" parent="."]
+
+[node name="EmoteTrigger" type="Area2D" parent="Triggers"]
 position = Vector2(766, 366)
 collision_layer = 16
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainTileMap/EmoteTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/EmoteTrigger"]
 position = Vector2(0, -41)
 shape = SubResource("RectangleShape2D_jo5ln")
 
@@ -606,13 +459,18 @@ wait_time = 1.2
 one_shot = true
 
 [node name="ConfusedEmoteTimer" type="Timer" parent="Character"]
+one_shot = true
+
+[node name="WaitTimer" type="Timer" parent="Character"]
+process_callback = 0
+one_shot = true
 
 [node name="RoomChangeTimer" type="Timer" parent="Character"]
 process_callback = 0
 one_shot = true
 
 [node name="TerrainOverlayTileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_ataub")
+tile_set = ExtResource("24_qjjx5")
 format = 2
 layer_0/tile_data = PackedInt32Array(1507372, 65539, 3, 1507373, 65539, 3, 1507374, 131075, 3, 1441838, 3, 1, 1376302, 3, 1, 1310766, 3, 1, 1245230, 3, 1, 1179694, 3, 1, 1114158, 3, 1, 1048622, 3, 1, 1572854, 65539, 4, 1572853, 65539, 4, 1572852, 3, 4, 1572890, 65538, 0, 1572891, 65538, 0, 1572880, 65538, 0, 1572881, 65538, 0, 1572882, 65538, 0, 1572883, 65538, 0, 1638396, 65538, 0, 1638397, 65538, 0, 1638398, 65538, 0, 1638399, 65538, 0)
 script = ExtResource("16_wgu2y")
@@ -646,7 +504,7 @@ position = Vector2(-34, 355)
 zoom = Vector2(2, 2)
 process_callback = 0
 position_smoothing_enabled = true
-position_smoothing_speed = 36.0
+position_smoothing_speed = 12.0
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 libraries = {
@@ -654,11 +512,6 @@ libraries = {
 }
 tree_root = SubResource("AnimationRootNode_00576")
 anim_player = NodePath("../AnimationPlayer")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="CircleTransition" parent="CanvasLayer" instance=ExtResource("25_sxutd")]
-metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="Interactables/Gate0/Timer" to="Interactables/Gate0" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Interactables/Gate" to="Character" method="_on_gate_body_entered"]
@@ -674,8 +527,9 @@ metadata/_edit_use_anchors_ = true
 [connection signal="body_entered" from="Interactables/PressurePlateD2" to="Interactables/PressurePlateD1" method="_on_pressure_plate_d_2_body_entered"]
 [connection signal="body_entered" from="Interactables/PressurePlateD2" to="Interactables/PressurePlateD2" method="_on_body_entered"]
 [connection signal="body_entered" from="TerrainTileMap/DungeonEntrance" to="Character" method="_on_dungeon_entrance_body_entered"]
-[connection signal="body_entered" from="TerrainTileMap/EmoteTrigger" to="Character" method="_on_emote_trigger_body_entered"]
+[connection signal="body_entered" from="Triggers/EmoteTrigger" to="Character" method="_on_emote_trigger_body_entered"]
 [connection signal="timeout" from="Character/WallPhaseTimer" to="Character" method="_on_wall_phase_timer_timeout"]
 [connection signal="timeout" from="Character/ConfusedEmoteTimer" to="Character" method="_on_confused_emote_timer_timeout"]
+[connection signal="timeout" from="Character/WaitTimer" to="Character" method="_on_wait_timer_timeout"]
 [connection signal="timeout" from="Character/RoomChangeTimer" to="Character" method="_on_room_change_timer_timeout"]
 [connection signal="body_entered" from="InputSprites/JumpPromptTrigger" to="Character" method="_on_jump_prompt_trigger_body_entered"]

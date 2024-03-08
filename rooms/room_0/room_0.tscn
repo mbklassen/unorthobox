@@ -1,11 +1,14 @@
-[gd_scene load_steps=35 format=3 uid="uid://ba43ooau8ijfk"]
+[gd_scene load_steps=37 format=3 uid="uid://ba43ooau8ijfk"]
 
 [ext_resource type="Texture2D" uid="uid://bpiismcr1j67b" path="res://tilemap-textures/background-grey-diamond.png" id="1_eh80b"]
 [ext_resource type="Texture2D" uid="uid://5ra6glnor082" path="res://rooms/room_1/interactables/gate/textures/gate-backdrop.png" id="2_edju0"]
+[ext_resource type="Script" path="res://rooms/room_0/gate.gd" id="2_oxvaw"]
 [ext_resource type="Texture2D" uid="uid://cxgppro3rxdho" path="res://rooms/room_1/interactables/gate/textures/gate.png" id="3_r4q7i"]
 [ext_resource type="Script" path="res://rooms/room_0/interactables/pressure-plate.gd" id="4_iqn10"]
+[ext_resource type="PackedScene" uid="uid://bcdqb81oco5v4" path="res://sound/sound-effects/gates/gate_opening_sound.tscn" id="5_4omjv"]
 [ext_resource type="Texture2D" uid="uid://cp77m22hwkik1" path="res://rooms/room_1/interactables/pressure-plate/textures/pressure-plate.png" id="5_ke848"]
 [ext_resource type="Texture2D" uid="uid://jhudpncgrujg" path="res://tilemap-textures/terrain.png" id="8_dwplx"]
+[ext_resource type="PackedScene" uid="uid://bswx7qjmhgmsq" path="res://sound/sound-effects/pressure-plates/click_down_sound.tscn" id="8_rjwyg"]
 [ext_resource type="Texture2D" uid="uid://d0hr6fs5h4v3g" path="res://tilemap-textures/terrain-edited.png" id="9_6dx5c"]
 [ext_resource type="Texture2D" uid="uid://bdq0p2iya24wy" path="res://input-textures/keyboard_a_outline.svg" id="10_nqnrp"]
 [ext_resource type="PackedScene" uid="uid://bcalalifl1lmm" path="res://character/character.tscn" id="10_qvx5k"]
@@ -13,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://cqah3i3osv71m" path="res://input-textures/keyboard_d_outline.svg" id="11_x34co"]
 [ext_resource type="Texture2D" uid="uid://brts8cbx6qgu0" path="res://input-textures/keyboard_w_outline.svg" id="12_cde3e"]
 [ext_resource type="Texture2D" uid="uid://cvajigjh4qayk" path="res://input-textures/keyboard_arrow_right_outline.png" id="13_lle2g"]
-[ext_resource type="PackedScene" uid="uid://bvxcyyjup53hk" path="res://ui/transitions/circle_transition.tscn" id="14_ypgy2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d0gyn"]
 texture = ExtResource("1_eh80b")
@@ -611,6 +613,7 @@ layer_0/tile_data = PackedInt32Array(196604, 0, 0, 262140, 0, 0, 327676, 0, 0, 3
 position = Vector2(385, 352.5)
 collision_layer = 4
 collision_mask = 2
+script = ExtResource("2_oxvaw")
 
 [node name="BackdropSprite2D" type="Sprite2D" parent="Interactables/Gate"]
 z_index = -2
@@ -627,6 +630,8 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_1mxen")
 disabled = true
 
+[node name="GateOpeningSound" parent="Interactables/Gate" instance=ExtResource("5_4omjv")]
+
 [node name="PressurePlate" type="Area2D" parent="Interactables"]
 position = Vector2(553, 382)
 collision_layer = 4
@@ -639,6 +644,8 @@ texture = ExtResource("5_ke848")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/PressurePlate"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_1lafv")
+
+[node name="ClickDownSound" parent="Interactables/PressurePlate" instance=ExtResource("8_rjwyg")]
 
 [node name="TerrainTileMap" type="TileMap" parent="." groups=["terrain"]]
 tile_set = SubResource("TileSet_vevfv")
@@ -661,6 +668,10 @@ script = ExtResource("11_nqckq")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Character"]
 remote_path = NodePath("../../Camera2D")
+
+[node name="WaitTimer" type="Timer" parent="Character"]
+process_callback = 0
+one_shot = true
 
 [node name="RoomChangeTimer" type="Timer" parent="Character"]
 process_callback = 0
@@ -722,13 +733,9 @@ libraries = {
 tree_root = SubResource("AnimationRootNode_00576")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="CircleTransition" parent="CanvasLayer" instance=ExtResource("14_ypgy2")]
-metadata/_edit_use_anchors_ = true
-
 [connection signal="body_entered" from="Interactables/Gate" to="Character" method="_on_gate_body_entered"]
 [connection signal="body_exited" from="Interactables/Gate" to="Character" method="_on_gate_body_exited"]
+[connection signal="body_entered" from="Interactables/PressurePlate" to="Interactables/Gate" method="_on_pressure_plate_body_entered"]
 [connection signal="body_entered" from="Interactables/PressurePlate" to="Interactables/PressurePlate" method="_on_body_entered"]
-[connection signal="body_exited" from="Interactables/PressurePlate" to="Interactables/PressurePlate" method="_on_body_exited"]
+[connection signal="timeout" from="Character/WaitTimer" to="Character" method="_on_wait_timer_timeout"]
 [connection signal="timeout" from="Character/RoomChangeTimer" to="Character" method="_on_room_change_timer_timeout"]

@@ -6,12 +6,11 @@ const JUMP_VELOCITY : float = -300.0
 const PUSH_FORCE : float = 1200.0
 
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var confused_emote_played : bool = false
 
 @onready var animated_sprite = $BackBufferCopy/AnimatedSprite2D
-@onready var circle_transition = $"../CanvasLayer/CircleTransition"
 
 func _ready():
-	circle_transition.call_deferred("set_next_animation", false)
 	animated_sprite.animation = "front"
 
 func _physics_process(delta) -> void:
@@ -33,3 +32,12 @@ func _physics_process(delta) -> void:
 	velocity.x = direction * SPEED
 	
 	move_and_slide()
+
+func _on_emote_trigger_body_entered(body):
+	if body.is_in_group("character") and not confused_emote_played:
+		PlayerManager.is_confused = true
+		confused_emote_played = true
+		$ConfusedEmoteTimer.start(1)
+		
+func _on_confused_emote_timer_timeout():
+	PlayerManager.is_confused = false

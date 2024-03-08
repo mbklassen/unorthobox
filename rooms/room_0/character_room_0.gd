@@ -8,12 +8,11 @@ const PUSH_FORCE : float = 1200.0
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var can_enter_gate : bool = false
 var is_entering_gate : bool = false
-var timer_started : bool = false
+var wait_timer_started : bool = false
 
 @onready var gate = $"../Interactables/Gate"
 @onready var animated_sprite = $BackBufferCopy/AnimatedSprite2D
 @onready var input_sprite_w = $"../InputSprites/Actions/W"
-@onready var circle_transition = $"../CanvasLayer/CircleTransition"
 
 func _ready():
 	animated_sprite.animation = "front"
@@ -39,10 +38,9 @@ func _physics_process(delta) -> void:
 		
 	if is_entering_gate:
 		enter_gate(gate,delta)
-		if position.y == gate.position.y + 14 and not timer_started:
-			circle_transition.set_next_animation(true)
-			$RoomChangeTimer.start(1.7)
-			timer_started = true
+		if position.y == gate.position.y + 14 and not wait_timer_started:
+			$WaitTimer.start(0.5)
+			wait_timer_started = true
 		
 	move_and_slide()
 
@@ -72,6 +70,11 @@ func _on_gate_body_exited(body) -> void:
 		can_enter_gate = false
 		input_sprite_w.visible = false
 
+func _on_wait_timer_timeout():
+	RoomManager.room_about_to_change = true
+	$RoomChangeTimer.start(0.9)
+
 func _on_room_change_timer_timeout():
+	RoomManager.room_about_to_change = false
 	RoomManager.current_room = 1
 	RoomManager.room_changed = true

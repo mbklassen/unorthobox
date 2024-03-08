@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcdqb81oco5v4"]
+
+[ext_resource type="AudioStream" uid="uid://cvdkxtyqpflgq" path="res://sound/sound-effects/gates/gate.ogg" id="1_thsxc"]
+
+[node name="GateOpeningSound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_thsxc")
+volume_db = -8.0
+pitch_scale = 1.6

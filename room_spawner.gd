@@ -24,4 +24,5 @@ func _process(_delta):
 				room = ROOM_2.instantiate()
 				add_child(room)
 		RoomManager.room_changed = false
+		RoomManager.entered_new_room = true
 	#pass

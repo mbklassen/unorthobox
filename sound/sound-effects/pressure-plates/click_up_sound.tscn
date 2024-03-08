@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt0o573hjphq2"]
+
+[ext_resource type="AudioStream" uid="uid://clc2180dhjadt" path="res://sound/sound-effects/pressure-plates/click-up.ogg" id="1_2oc17"]
+
+[node name="ClickUpSound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_2oc17")
+volume_db = 15.0
