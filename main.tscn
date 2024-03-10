@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://7fxpfbwi18dv"]
+[gd_scene load_steps=6 format=3 uid="uid://7fxpfbwi18dv"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_q20gi"]
 [ext_resource type="Script" path="res://room_spawner.gd" id="1_uawcq"]
 [ext_resource type="Texture2D" uid="uid://28mq2g7v3o1l" path="res://ui/hud/textures/restart-arrow.svg" id="2_75y6l"]
 [ext_resource type="PackedScene" uid="uid://bvxcyyjup53hk" path="res://ui/transitions/circle_transition.tscn" id="3_krvid"]
+[ext_resource type="Script" path="res://ui/hud/restart_button.gd" id="5_3x2cn"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_q20gi")
@@ -46,5 +47,6 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_75y6l")
 texture_pressed = ExtResource("2_75y6l")
 stretch_mode = 4
+script = ExtResource("5_3x2cn")
 
 [connection signal="button_up" from="UI/HUD/RestartButton" to="." method="_on_restart_button_button_up"]

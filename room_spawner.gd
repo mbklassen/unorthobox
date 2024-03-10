@@ -3,6 +3,7 @@ extends Node2D
 const ROOM_0 : PackedScene = preload("res://rooms/room_0/room_0.tscn")
 const ROOM_1 : PackedScene = preload("res://rooms/room_1/room_1.tscn")
 const ROOM_2 : PackedScene = preload("res://rooms/room_2/room_2.tscn")
+const ROOM_3 : PackedScene = preload("res://rooms/room_3/room_3.tscn")
 
 var room : Node2D
 var old_room : Node2D
@@ -24,8 +25,11 @@ func _process(_delta):
 				room = ROOM_2.instantiate()
 				add_child(room)
 			3:
-				print("Entered new room")
+				room = ROOM_3.instantiate()
+				add_child(room)
 		print("current room: " + str(RoomManager.current_room))
 		RoomManager.room_changed = false
-		RoomManager.entered_new_room = true
+		if RoomManager.current_room > 0:
+			RoomManager.music_pitch_changed = false
+			RoomManager.entered_new_room = true
 	#pass
