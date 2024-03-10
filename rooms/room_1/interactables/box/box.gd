@@ -9,6 +9,7 @@ const BOX_PIECE_4_TEXTURE : Texture2D = preload("res://rooms/room_1/interactable
 
 @onready var interactables = $".."
 
+
 func spring(power : float, direction : float) -> void:
 	lock_rotation = false
 	linear_velocity.x = linear_velocity.x - cos(direction) * power

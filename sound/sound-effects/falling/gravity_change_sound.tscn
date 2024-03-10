@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwihcouamvu6o"]
+
+[ext_resource type="AudioStream" uid="uid://t3u2ijsk1a48" path="res://sound/sound-effects/falling/gravity_change.ogg" id="1_51ye2"]
+
+[node name="GravityChangeSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_51ye2")
+volume_db = 6.0
+pitch_scale = 0.7

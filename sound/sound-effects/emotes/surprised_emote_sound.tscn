@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyeso3hpow021"]
+
+[ext_resource type="AudioStream" uid="uid://wwbo685k0hep" path="res://sound/sound-effects/emotes/surprised.ogg" id="1_2xfj4"]
+
+[node name="SurprisedEmoteSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_2xfj4")
+volume_db = -15.0
+pitch_scale = 1.2

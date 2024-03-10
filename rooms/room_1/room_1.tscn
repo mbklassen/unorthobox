@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://qhx7mngavidm"]
+[gd_scene load_steps=63 format=3 uid="uid://qhx7mngavidm"]
 
 [ext_resource type="TileSet" uid="uid://23fh70gmd0lj" path="res://rooms/tile_sets/normal_bg_tile_set.tres" id="1_l2wwc"]
 [ext_resource type="Script" path="res://rooms/room_1/interactables/gate/gate_0.gd" id="2_2lypd"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cp77m22hwkik1" path="res://rooms/room_1/interactables/pressure-plate/textures/pressure-plate.png" id="9_n5tb7"]
 [ext_resource type="Script" path="res://rooms/room_1/interactables/box/box.gd" id="10_fslgy"]
 [ext_resource type="Texture2D" uid="uid://cqh5qpvugh6wt" path="res://rooms/room_1/interactables/box/textures/box.png" id="11_etwt6"]
+[ext_resource type="AudioStream" uid="uid://0durhbu4l8ph" path="res://sound/sound-effects/pressure-plates/spring.ogg" id="12_5wfog"]
 [ext_resource type="PackedScene" uid="uid://bswx7qjmhgmsq" path="res://sound/sound-effects/pressure-plates/click_down_sound.tscn" id="13_a45lg"]
 [ext_resource type="PackedScene" uid="uid://bt0o573hjphq2" path="res://sound/sound-effects/pressure-plates/click_up_sound.tscn" id="13_kn8iw"]
 [ext_resource type="PackedScene" uid="uid://bcalalifl1lmm" path="res://character/character.tscn" id="14_3i3kf"]
@@ -25,34 +26,38 @@
 [ext_resource type="TileSet" uid="uid://dwqxio5vypmyv" path="res://rooms/tile_sets/terrain_tile_set.tres" id="16_7mb85"]
 [ext_resource type="Texture2D" uid="uid://brtggpe62pmk8" path="res://input-textures/keyboard_space_outline.svg" id="16_62ve4"]
 [ext_resource type="Script" path="res://rooms/room_1/terrain_overlay_tile_map.gd" id="16_wgu2y"]
+[ext_resource type="AudioStream" uid="uid://bu4syqkde4uyd" path="res://sound/sound-effects/pressure-plates/box-smash.ogg" id="19_q1wpq"]
 [ext_resource type="Script" path="res://rooms/room_1/input_sprite_space.gd" id="21_al75m"]
+[ext_resource type="AudioStream" uid="uid://b6cw73fuok0nj" path="res://sound/sound-effects/falling/wind-rush.ogg" id="22_7ru2s"]
 [ext_resource type="TileSet" uid="uid://ry2a2o7m0csv" path="res://rooms/tile_sets/terrain_overlay_tile_set.tres" id="24_qjjx5"]
+[ext_resource type="Script" path="res://rooms/room_1/dungeon_entrance.gd" id="24_w0373"]
+[ext_resource type="AudioStream" uid="uid://bywn5ai8k1kcp" path="res://sound/sound-effects/falling/thump.ogg" id="25_wyyqm"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1v0wm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyw7n"]
 atlas = ExtResource("5_wf6i8")
 region = Rect2(0, 0, 48, 65)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ui1t2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3md0"]
 atlas = ExtResource("5_wf6i8")
 region = Rect2(48, 0, 48, 65)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_14pvc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n5wr"]
 atlas = ExtResource("5_wf6i8")
 region = Rect2(96, 0, 48, 65)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rj8bm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtjqg"]
 atlas = ExtResource("5_wf6i8")
 region = Rect2(144, 0, 48, 65)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1fedx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_13sfn"]
 atlas = ExtResource("5_wf6i8")
 region = Rect2(192, 0, 48, 65)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hqoeq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsh3r"]
 atlas = ExtResource("5_wf6i8")
 region = Rect2(240, 0, 48, 65)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3xum0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_du5mj"]
 atlas = ExtResource("5_wf6i8")
 region = Rect2(288, 0, 48, 65)
 
@@ -60,25 +65,25 @@ region = Rect2(288, 0, 48, 65)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1v0wm")
+"texture": SubResource("AtlasTexture_tyw7n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ui1t2")
+"texture": SubResource("AtlasTexture_d3md0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_14pvc")
+"texture": SubResource("AtlasTexture_0n5wr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rj8bm")
+"texture": SubResource("AtlasTexture_jtjqg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1fedx")
+"texture": SubResource("AtlasTexture_13sfn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hqoeq")
+"texture": SubResource("AtlasTexture_fsh3r")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3xum0")
+"texture": SubResource("AtlasTexture_du5mj")
 }],
 "loop": false,
 "name": &"open",
@@ -98,7 +103,7 @@ size = Vector2(21, 3)
 size = Vector2(21, 4)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_n3awm"]
-absorbent = true
+rough = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4qhu"]
 
@@ -112,7 +117,7 @@ size = Vector2(848, 14)
 size = Vector2(47, 39.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4o5cm"]
-size = Vector2(48, 39.5)
+size = Vector2(48, 39.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpvpn"]
 size = Vector2(1088, 14)
@@ -182,6 +187,8 @@ layer_0/tile_data = PackedInt32Array(5046315, 0, 0, 5111851, 0, 1, 5177387, 0, 1
 
 [node name="Gate0" type="Area2D" parent="Interactables"]
 position = Vector2(-34, 351.5)
+collision_layer = 32
+collision_mask = 2
 script = ExtResource("2_2lypd")
 
 [node name="BackdropSprite2D" type="Sprite2D" parent="Interactables/Gate0"]
@@ -209,7 +216,7 @@ one_shot = true
 
 [node name="Gate" type="Area2D" parent="Interactables"]
 position = Vector2(286, 352.5)
-collision_layer = 4
+collision_layer = 32
 collision_mask = 2
 script = ExtResource("2_n6yt1")
 
@@ -267,7 +274,7 @@ disabled = true
 
 [node name="Gate2" type="Area2D" parent="Interactables"]
 position = Vector2(1151, 1344.5)
-collision_layer = 4
+collision_layer = 32
 collision_mask = 2
 
 [node name="BackdropSprite2D" type="Sprite2D" parent="Interactables/Gate2"]
@@ -288,7 +295,7 @@ disabled = true
 [node name="GateOpeningSound" parent="Interactables/Gate2" instance=ExtResource("9_m78fa")]
 
 [node name="Spring" type="Area2D" parent="Interactables"]
-position = Vector2(431, 377)
+position = Vector2(431, 379)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("6_wab8u")
@@ -296,10 +303,22 @@ script = ExtResource("6_wab8u")
 [node name="SpringSprite2D" type="Sprite2D" parent="Interactables/Spring"]
 texture = ExtResource("7_x8cgi")
 hframes = 8
+frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Spring"]
 position = Vector2(-0.5, 8.5)
 shape = SubResource("RectangleShape2D_eal7c")
+
+[node name="SpringSound" type="AudioStreamPlayer2D" parent="Interactables/Spring"]
+stream = ExtResource("12_5wfog")
+volume_db = 5.0
+pitch_scale = 1.4
+
+[node name="BoxSmashSound" type="AudioStreamPlayer2D" parent="Interactables/Spring"]
+position = Vector2(182, -3)
+stream = ExtResource("19_q1wpq")
+volume_db = -3.0
+pitch_scale = 0.6
 
 [node name="PressurePlate" type="Area2D" parent="Interactables"]
 position = Vector2(431, 382)
@@ -331,8 +350,7 @@ collision_mask = 7
 mass = 1.1
 physics_material_override = SubResource("PhysicsMaterial_n3awm")
 lock_rotation = true
-continuous_cd = 2
-max_contacts_reported = 10
+max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("10_fslgy")
 
@@ -392,7 +410,7 @@ position = Vector2(357.5, 0.875)
 shape = SubResource("RectangleShape2D_d0elx")
 
 [node name="CollisionShapeFloor3" type="CollisionShape2D" parent="TerrainTileMap/Floor"]
-position = Vector2(-538, 1)
+position = Vector2(-538, 0.875)
 shape = SubResource("RectangleShape2D_4o5cm")
 
 [node name="InvisibleColliders" type="StaticBody2D" parent="TerrainTileMap"]
@@ -428,10 +446,21 @@ shape = SubResource("RectangleShape2D_202rb")
 [node name="DungeonEntrance" type="Area2D" parent="TerrainTileMap"]
 collision_layer = 16
 collision_mask = 2
+script = ExtResource("24_w0373")
 
 [node name="CollisionShapeEnterDungeon" type="CollisionShape2D" parent="TerrainTileMap/DungeonEntrance"]
 position = Vector2(952, 392)
 shape = SubResource("RectangleShape2D_gqd6t")
+
+[node name="WindRushSound" type="AudioStreamPlayer" parent="TerrainTileMap/DungeonEntrance"]
+stream = ExtResource("22_7ru2s")
+volume_db = -3.0
+pitch_scale = 1.4
+
+[node name="LandingThumpSound" type="AudioStreamPlayer" parent="TerrainTileMap/DungeonEntrance"]
+stream = ExtResource("25_wyyqm")
+volume_db = -3.0
+pitch_scale = 2.2
 
 [node name="Triggers" type="Node2D" parent="."]
 
@@ -446,7 +475,8 @@ shape = SubResource("RectangleShape2D_jo5ln")
 
 [node name="Character" parent="." instance=ExtResource("14_3i3kf")]
 z_index = 2
-position = Vector2(-34, 355)
+position = Vector2(-34, 371)
+collision_mask = 63
 collision_priority = 20.0
 script = ExtResource("15_ri2d1")
 
@@ -458,7 +488,7 @@ process_callback = 0
 wait_time = 1.2
 one_shot = true
 
-[node name="ConfusedEmoteTimer" type="Timer" parent="Character"]
+[node name="EmoteTimer" type="Timer" parent="Character"]
 one_shot = true
 
 [node name="WaitTimer" type="Timer" parent="Character"]
@@ -476,11 +506,10 @@ layer_0/tile_data = PackedInt32Array(1507372, 65539, 3, 1507373, 65539, 3, 15073
 script = ExtResource("16_wgu2y")
 
 [node name="InputSprites" type="Node2D" parent="."]
-modulate = Color(1, 1, 1, 0.858824)
+modulate = Color(0.2, 0.2, 0.25098, 0.878431)
 
 [node name="Space" type="Sprite2D" parent="InputSprites"]
 visible = false
-modulate = Color(0.301961, 0.301961, 0.301961, 1)
 position = Vector2(659, 342)
 texture = ExtResource("16_62ve4")
 script = ExtResource("21_al75m")
@@ -500,7 +529,7 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-34, 355)
+position = Vector2(-34, 371)
 zoom = Vector2(2, 2)
 process_callback = 0
 position_smoothing_enabled = true
@@ -521,15 +550,17 @@ anim_player = NodePath("../AnimationPlayer")
 [connection signal="body_entered" from="Interactables/PressurePlate" to="Interactables/PressurePlate" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactables/PressurePlate" to="Interactables/PressurePlate" method="_on_body_exited"]
 [connection signal="timeout" from="Interactables/PressurePlate/Timer" to="Interactables/PressurePlate" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Interactables/Box" to="Interactables/Spring" method="_on_box_body_entered"]
 [connection signal="body_entered" from="Interactables/Box" to="Interactables/Box" method="_on_box_body_entered"]
 [connection signal="body_entered" from="Interactables/PressurePlateD1" to="Interactables/PressurePlateD1" method="_on_body_entered"]
 [connection signal="body_entered" from="Interactables/PressurePlateD1" to="Interactables/PressurePlateD2" method="_on_pressure_plate_d_1_body_entered"]
 [connection signal="body_entered" from="Interactables/PressurePlateD2" to="Interactables/PressurePlateD1" method="_on_pressure_plate_d_2_body_entered"]
 [connection signal="body_entered" from="Interactables/PressurePlateD2" to="Interactables/PressurePlateD2" method="_on_body_entered"]
 [connection signal="body_entered" from="TerrainTileMap/DungeonEntrance" to="Character" method="_on_dungeon_entrance_body_entered"]
+[connection signal="finished" from="TerrainTileMap/DungeonEntrance/WindRushSound" to="TerrainTileMap/DungeonEntrance" method="_on_wind_rush_sound_finished"]
 [connection signal="body_entered" from="Triggers/EmoteTrigger" to="Character" method="_on_emote_trigger_body_entered"]
 [connection signal="timeout" from="Character/WallPhaseTimer" to="Character" method="_on_wall_phase_timer_timeout"]
-[connection signal="timeout" from="Character/ConfusedEmoteTimer" to="Character" method="_on_confused_emote_timer_timeout"]
+[connection signal="timeout" from="Character/EmoteTimer" to="Character" method="_on_emote_timer_timeout"]
 [connection signal="timeout" from="Character/WaitTimer" to="Character" method="_on_wait_timer_timeout"]
 [connection signal="timeout" from="Character/RoomChangeTimer" to="Character" method="_on_room_change_timer_timeout"]
 [connection signal="body_entered" from="InputSprites/JumpPromptTrigger" to="Character" method="_on_jump_prompt_trigger_body_entered"]

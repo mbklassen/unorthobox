@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bibtv654g8il7"]
+
+[ext_resource type="AudioStream" uid="uid://dqonlsf4n6p1b" path="res://sound/sound-effects/emotes/confused.ogg" id="1_d3v8v"]
+
+[node name="ConfusedEmoteSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_d3v8v")
+volume_db = -8.0
+pitch_scale = 2.0

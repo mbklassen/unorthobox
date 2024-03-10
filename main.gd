@@ -6,10 +6,11 @@ func _ready():
 	PlayerManager.is_surprised = false
 	PlayerManager.is_confused = false
 	
-	RoomManager.current_room = 0
-	RoomManager.room_changed = false
+	RoomManager.current_room = 2
+	RoomManager.room_changed = true
 	RoomManager.entered_new_room = true
+	RoomManager.gravity_reversed = false
 
 func _on_restart_button_button_up():
-	RoomManager.current_room = 0
+	RoomManager.current_room = 2
 	get_tree().reload_current_scene()

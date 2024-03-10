@@ -1,6 +1,7 @@
-[gd_scene load_steps=37 format=3 uid="uid://ba43ooau8ijfk"]
+[gd_scene load_steps=39 format=3 uid="uid://ba43ooau8ijfk"]
 
-[ext_resource type="Texture2D" uid="uid://bpiismcr1j67b" path="res://tilemap-textures/background-grey-diamond.png" id="1_eh80b"]
+[ext_resource type="Texture2D" uid="uid://dr06ejfi722iy" path="res://tilemap-textures/background-grey-diamond.png" id="1_eh80b"]
+[ext_resource type="Texture2D" uid="uid://cww3pe1ktwwej" path="res://tilemap-textures/background-grey-squares.png" id="2_bbg8v"]
 [ext_resource type="Texture2D" uid="uid://5ra6glnor082" path="res://rooms/room_1/interactables/gate/textures/gate-backdrop.png" id="2_edju0"]
 [ext_resource type="Script" path="res://rooms/room_0/gate.gd" id="2_oxvaw"]
 [ext_resource type="Texture2D" uid="uid://cxgppro3rxdho" path="res://rooms/room_1/interactables/gate/textures/gate.png" id="3_r4q7i"]
@@ -22,9 +23,15 @@ texture = ExtResource("1_eh80b")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tivdp"]
+texture = ExtResource("2_bbg8v")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_oah00"]
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_d0gyn")
+sources/2 = SubResource("TileSetAtlasSource_tivdp")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1v0wm"]
 atlas = ExtResource("3_r4q7i")
@@ -663,7 +670,8 @@ shape = SubResource("RectangleShape2D_p4una")
 
 [node name="Character" parent="." instance=ExtResource("10_qvx5k")]
 z_index = 2
-position = Vector2(192, 372)
+position = Vector2(192, 371)
+collision_mask = 63
 script = ExtResource("11_nqckq")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Character"]
@@ -678,29 +686,25 @@ process_callback = 0
 one_shot = true
 
 [node name="InputSprites" type="Node2D" parent="."]
-modulate = Color(1, 1, 1, 0.858824)
+modulate = Color(0.2, 0.2, 0.25098, 0.878431)
 
 [node name="Movement" type="Node2D" parent="InputSprites"]
 
 [node name="A" type="Sprite2D" parent="InputSprites/Movement"]
-modulate = Color(0.301961, 0.301961, 0.301961, 1)
 position = Vector2(174, 280)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("10_nqnrp")
 
 [node name="D" type="Sprite2D" parent="InputSprites/Movement"]
-modulate = Color(0.301961, 0.301961, 0.301961, 1)
 position = Vector2(210, 280)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("11_x34co")
 
 [node name="RightArrow" type="Sprite2D" parent="InputSprites/Movement"]
-modulate = Color(0.301961, 0.301961, 0.301961, 1)
 position = Vector2(211, 300)
 texture = ExtResource("13_lle2g")
 
 [node name="LeftArrow" type="Sprite2D" parent="InputSprites/Movement"]
-modulate = Color(0.301961, 0.301961, 0.301961, 1)
 position = Vector2(173, 300)
 rotation = -3.14159
 texture = ExtResource("13_lle2g")
@@ -709,7 +713,6 @@ texture = ExtResource("13_lle2g")
 
 [node name="W" type="Sprite2D" parent="InputSprites/Actions"]
 visible = false
-modulate = Color(0.301961, 0.301961, 0.301961, 1)
 position = Vector2(385, 307)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("12_cde3e")
@@ -720,7 +723,7 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(192, 372)
+position = Vector2(192, 371)
 zoom = Vector2(2, 2)
 process_callback = 0
 position_smoothing_enabled = true

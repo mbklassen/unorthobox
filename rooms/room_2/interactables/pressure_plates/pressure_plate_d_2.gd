@@ -7,6 +7,7 @@ var pressure_plate_d1_pressed : bool = false
 @onready var character = $"../../Character"
 @onready var click_down_sound = $ClickDownSound
 
+
 func _on_body_entered(body) -> void:
 	if body.is_in_group("character"):
 		click_down_sound.play()
