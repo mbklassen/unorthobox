@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED : float = 150.0
+const SPEED : float = 140.0
 const JUMP_VELOCITY : float = -300.0
 const PUSH_FORCE : float = 1200.0
 

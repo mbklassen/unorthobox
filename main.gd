@@ -9,7 +9,7 @@ func _ready():
 	RoomManager.room_changed = true
 	RoomManager.entered_new_room = false
 	RoomManager.gravity_reversed = false
-	RoomManager.music_pitch_changed = false
+	#RoomManager.music_pitch_changed = false
 
 func _on_restart_button_button_up():
 	RoomManager.current_room = 0

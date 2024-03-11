@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://dw0aeiktwwsta"]
+[gd_scene load_steps=74 format=3 uid="uid://dw0aeiktwwsta"]
 
 [ext_resource type="TileSet" uid="uid://23fh70gmd0lj" path="res://rooms/tile_sets/normal_bg_tile_set.tres" id="1_upjpv"]
 [ext_resource type="Script" path="res://rooms/room_2/interactables/gates/gate_0/gate_0.gd" id="2_fsnmr"]
@@ -19,6 +19,7 @@
 [ext_resource type="TileSet" uid="uid://ry2a2o7m0csv" path="res://rooms/tile_sets/terrain_overlay_tile_set.tres" id="15_4wsm0"]
 [ext_resource type="Script" path="res://rooms/room_2/interactables/pressure_plates/pressure_plate_secret.gd" id="15_53ypa"]
 [ext_resource type="PackedScene" uid="uid://cbymv6yne8ftc" path="res://rooms/room_1/interactables/box/box_piece.tscn" id="15_qkwee"]
+[ext_resource type="PackedScene" uid="uid://bt0o573hjphq2" path="res://sound/sound-effects/pressure-plates/click_up_sound.tscn" id="15_xwrs6"]
 [ext_resource type="Script" path="res://rooms/room_2/dungeon_exit.gd" id="16_hypoy"]
 [ext_resource type="Script" path="res://rooms/room_2/interactables/pressure_plates/pressure_plate_upside_down.gd" id="16_q3hjt"]
 [ext_resource type="Script" path="res://rooms/room_2/interactables/box/box_piece.gd" id="16_wmr1y"]
@@ -27,6 +28,9 @@
 [ext_resource type="Script" path="res://rooms/room_2/interactables/box/box_piece3.gd" id="18_l3l8u"]
 [ext_resource type="AudioStream" uid="uid://bywn5ai8k1kcp" path="res://sound/sound-effects/falling/thump.ogg" id="18_ns8iw"]
 [ext_resource type="Script" path="res://rooms/room_2/interactables/box/box_piece4.gd" id="19_bmx1q"]
+[ext_resource type="Texture2D" uid="uid://cvajigjh4qayk" path="res://input-textures/keyboard_arrow_right_outline.png" id="26_2k5lt"]
+[ext_resource type="Script" path="res://rooms/room_2/triggers/secret_trigger.gd" id="28_1wvuu"]
+[ext_resource type="Script" path="res://rooms/room_2/triggers/secret_trigger_2.gd" id="28_pfx7o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1v0wm"]
 atlas = ExtResource("5_ybyhr")
@@ -214,6 +218,12 @@ size = Vector2(4, 106)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmret"]
 size = Vector2(4, 106)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ng4ip"]
+size = Vector2(350.5, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njd57"]
+size = Vector2(701.25, 3.5)
+
 [node name="Room2" type="Node2D"]
 
 [node name="NormalBGTileMap" type="TileMap" parent="."]
@@ -370,10 +380,12 @@ shape = SubResource("RectangleShape2D_du1f3")
 
 [node name="ClickDownSound" parent="Interactables/PressurePlateUpsideDown" instance=ExtResource("7_mn6el")]
 
+[node name="ClickUpSound" parent="Interactables/PressurePlateUpsideDown" instance=ExtResource("15_xwrs6")]
+
 [node name="PressurePlateSecret" type="Area2D" parent="Interactables"]
 visible = false
 z_index = 1
-position = Vector2(-181, -255)
+position = Vector2(-181, -281)
 rotation = 1.5708
 collision_layer = 4
 collision_mask = 6
@@ -528,6 +540,52 @@ stream = ExtResource("18_ns8iw")
 volume_db = -3.0
 pitch_scale = 2.2
 
+[node name="SecretMessage" type="Node2D" parent="."]
+visible = false
+
+[node name="Message" type="Label" parent="SecretMessage"]
+modulate = Color(0.811765, 0.811765, 0.811765, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 233.0
+offset_top = -290.0
+offset_right = 419.0
+offset_bottom = -258.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "Don't like jump quests?
+Try a wall flip instead!"
+horizontal_alignment = 1
+
+[node name="LeftArrow" type="Sprite2D" parent="SecretMessage"]
+modulate = Color(0.811765, 0.811765, 0.811765, 1)
+position = Vector2(325, -249)
+rotation = -3.14159
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("26_2k5lt")
+
+[node name="SecretMessage2" type="Label" parent="."]
+visible = false
+modulate = Color(0.811765, 0.811765, 0.811765, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = 106.0
+offset_right = 50.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "Well done!"
+horizontal_alignment = 1
+
 [node name="Character" parent="." instance=ExtResource("6_7hq2o")]
 z_index = 2
 position = Vector2(1151, 1363)
@@ -577,6 +635,26 @@ position = Vector2(0, -41)
 shape = SubResource("RectangleShape2D_vmret")
 disabled = true
 
+[node name="SecretTrigger" type="Area2D" parent="Triggers"]
+position = Vector2(-593, -1424)
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("28_1wvuu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/SecretTrigger"]
+position = Vector2(-10.25, 0.5)
+shape = SubResource("RectangleShape2D_ng4ip")
+
+[node name="SecretTrigger2" type="Area2D" parent="Triggers"]
+position = Vector2(-593, -1424)
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("28_pfx7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/SecretTrigger2"]
+position = Vector2(-379.375, -141.75)
+shape = SubResource("RectangleShape2D_njd57")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1151, 1363)
 zoom = Vector2(2, 2)
@@ -594,6 +672,7 @@ position_smoothing_speed = 12.0
 [connection signal="body_entered" from="Interactables/Gate2" to="Character" method="_on_gate_2_body_entered"]
 [connection signal="body_exited" from="Interactables/Gate2" to="Character" method="_on_gate_2_body_exited"]
 [connection signal="body_entered" from="Interactables/PressurePlateUpsideDown" to="Interactables/PressurePlateUpsideDown" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactables/PressurePlateUpsideDown" to="Interactables/PressurePlateUpsideDown" method="_on_body_exited"]
 [connection signal="body_entered" from="Interactables/PressurePlateSecret" to="Interactables/PressurePlateSecret" method="_on_body_entered"]
 [connection signal="finished" from="Interactables/PressurePlateSecret/WindRushSound" to="Interactables/PressurePlateSecret" method="_on_wind_rush_sound_finished"]
 [connection signal="body_entered" from="TerrainTileMap/DungeonExit" to="TerrainTileMap/DungeonExit" method="_on_body_entered"]
@@ -603,3 +682,5 @@ position_smoothing_speed = 12.0
 [connection signal="timeout" from="Character/EmoteTimer" to="Character" method="_on_emote_timer_timeout"]
 [connection signal="body_entered" from="Triggers/EmoteTrigger" to="Character" method="_on_emote_trigger_body_entered"]
 [connection signal="body_entered" from="Triggers/EmoteTrigger1" to="Character" method="_on_emote_trigger_1_body_entered"]
+[connection signal="body_entered" from="Triggers/SecretTrigger" to="Triggers/SecretTrigger2" method="_on_secret_trigger_body_entered"]
+[connection signal="body_entered" from="Triggers/SecretTrigger2" to="Triggers/SecretTrigger" method="_on_secret_trigger_2_body_entered"]
